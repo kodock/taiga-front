@@ -33,7 +33,7 @@ a.list-itemtype-ticket(
             )
 
         h2
-            span.ticket-id(tg-bo-ref="duty.get('ref')")
+            small.ticket-id(tg-bo-ref="duty.get('ref')")
             span.ticket-title
                 span.ticket-blocked(
                     ng-if="::vm.duty.get('is_blocked')"

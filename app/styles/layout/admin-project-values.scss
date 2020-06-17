@@ -44,7 +44,7 @@
     display: flex;
     justify-content: space-between;
     padding: .8em 1rem;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     h2 {
         @include font-type(light);
         @include font-size(large);

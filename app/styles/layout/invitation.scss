@@ -37,7 +37,7 @@
         .project-name {
             @include font-size(xlarge);
             display: block;
-            text-transform: uppercase;
+            // text-transform: uppercase;
         }
     }
     .invitation-form {

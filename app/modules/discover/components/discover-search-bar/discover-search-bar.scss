@@ -10,8 +10,13 @@
     .title {
         @include font-type(light);
         @include font-size(xxlarge);
+        display: block;
         line-height: 3rem;
         margin-bottom: 0;
+        margin-top: 20px;
+    }
+    .searchbox {
+        margin-top: 20px;
     }
     .project-number {
         @include font-type(light);
