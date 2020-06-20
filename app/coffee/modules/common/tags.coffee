@@ -58,7 +58,7 @@ ColorizeTagsBacklogDirective = ($emojis) ->
         <% _.each(tags, function(tag) { %>
             <% if (tag[1] !== null) { %>
             <span class="tag"
-                  style="border-left: 5px solid <%- tag[1] %>"
+                  style="background-color: <%- tag[1] %>"
                   title="<%- tag[0] %>">
                   <%= emojify(tag[0]) %>
             </span>

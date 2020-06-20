@@ -211,7 +211,7 @@
         display: flex;
         flex-wrap: nowrap;
         a {
-            @include font-type(light);
+            @include font-type(text);
             display: inline-block;
             flex: 1;
         }
@@ -221,11 +221,14 @@
     }
     .tags-block {
         display: none;
-        margin-bottom: .3rem;
+        margin-top: .2rem;
         .tag {
-            @include font-size(small);
+            // @include font-size(small);
+            border-left: 0;
+            color: $white;
+            font-size: .7rem;
             margin-right: .5rem;
-            padding: .2rem .5rem;
+            padding: .1rem .5rem;
         }
     }
     .blocked {
