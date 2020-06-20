@@ -26,7 +26,7 @@
                 title="#{{ us.ref }} {{ us.subject }}"
             )
                 span(tg-bo-ref="us.ref" style="font-size: smaller; color: #aaa; display: inline-block; margin-right: 5px; min-width: 20px; ")
-                span(ng-bind-html="us.subject | emojify" ng-class="{'text-section': us.subject.trim().endsWith(':')}")
+                span(ng-bind-html="us.subject | emojify" ng-class="{'text-section': us.subject.trim().endsWith(':'), 'text-muted text-del': us.status_extra_info && us.status_extra_info.is_closed}")
                 
                 tg-due-date(
                     due-date="us.due_date"

@@ -122,3 +122,11 @@ body {
     font-size: 1.2em;
     font-weight: bold;
 }
+
+.text-muted {
+    color: $grey-20;
+}
+
+.text-del {
+    text-decoration: line-through;
+}
