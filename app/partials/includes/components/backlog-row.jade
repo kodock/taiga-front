@@ -61,7 +61,8 @@
                 )
                     tg-svg(svg-icon="icon-trash")
 
-        .tags-block(tg-colorize-backlog-tags="us.tags")
+            .tags-block(tg-colorize-backlog-tags="us.tags")
+
     div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
             span.us-status-bind
