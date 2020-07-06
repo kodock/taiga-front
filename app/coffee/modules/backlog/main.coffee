@@ -279,6 +279,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.loadingUserstories = true
         @.disablePagination = true
         params = _.clone(@location.search())
+        params.include_tasks = true
         @rs.userstories.storeQueryParams(@scope.projectId, params)
 
         if resetPagination

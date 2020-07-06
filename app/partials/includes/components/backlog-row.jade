@@ -39,6 +39,11 @@
                     ng-if="us.epics"
                     epics="us.epics"
                 )
+                span(
+                    style="font-size: smaller; color: #aaa;"
+                    ng-if="us.tasks.length > 0"
+                ) ({{us.tasks.length}} subtask)
+
             .us-settings
                 a.e2e-edit.edit-story(
                     href=""
