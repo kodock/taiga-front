@@ -1,3 +1,18 @@
+tg-due-date[format="icontext"] {
+    background-color: $grey-10;
+    border: 1px solid $grey-20;
+    border-radius: 3px;
+    color: $grey-40;
+    display: inline-block;
+    font-size: .78em;
+    margin-top: 4px;
+    padding: 2px 5px;
+    svg {
+        height: 1em;
+        width: 1em;
+    }
+}
+
 .due-date-button {
     background: $gray-light;
     display: inline-block;
