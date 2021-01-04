@@ -46,7 +46,8 @@ if (argv.theme) {
     themes.set(argv.theme);
 }
 
-var version = "v-" + Date.now();
+// var version = "v-" + Date.now();
+var version = "v-" + 10;
 
 var paths = {};
 paths.app = "app/";
@@ -734,6 +735,15 @@ gulp.task("express", function() {
     });
 
     app.listen(9001);
+
+    console.log("")
+    console.log("--------------------------------")
+    console.log("Hosted at http://localhost:9001/")
+    console.log("Version Running: " + version)
+    console.log("")
+    console.log("!!! WARNING: Nek kate regenerate Asset ojo lali upgrage versi")
+    console.log("--------------------------------")
+    console.log("")
 });
 
 //Rerun the task when a file changes
