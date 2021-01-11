@@ -9,7 +9,12 @@ div.wrapper(
     div.main.detail
         .detail-header-container(ng-class="{blocked: issue.is_blocked}")
             tg-detail-nav(item="issue")
-            .detail-ref {{'#' + issue.ref}}
+            .detail-project(style="display: block; padding-top: 5px;")
+                .section-name(
+                    style="margin: 0"
+                    ) {{sectionName}}
+                div.ref-id.ref-id {{'#' + issue.ref}}
+
             .detail-header
                 tg-detail-header(
                     item="issue"

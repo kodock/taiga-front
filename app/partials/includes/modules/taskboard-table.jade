@@ -5,7 +5,14 @@ div.taskboard-table(
 )
     div.taskboard-table-header
         div.taskboard-table-inner
-            h2.task-colum-name(translate="TASKBOARD.TABLE.COLUMN")
+            h2.task-colum-name.task-colum-name-title()
+                tg-svg.vfold.fold-action(
+                    svg-icon="icon-fold-row",
+                    ng-click='foldUs(-1)'
+                    title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
+                    style="position: absolute; left: 12px;"
+                )
+                span(translate="TASKBOARD.TABLE.COLUMN")
             h2.task-colum-name(
                 ng-repeat="s in ::taskStatusList track by s.id"
                 ng-style="{'border-top-color':s.color}"
@@ -67,21 +74,23 @@ div.taskboard-table(
                             span(
                               ng-style="{'color': usStatusById[us.status]['color']}"
                               ng-bind="usStatusById[us.status]['name']")
-                        p.points-value(data-id="{{us.id}}")
+                        p.points-value(data-id="{{us.id}}" ng-if="us.total_points")
                             span(ng-bind="us.total_points")
                             span(ng-if="us.total_points"
                                  translate="TASKBOARD.TABLE.FIELD_POINTS"
                             )
+                            | Points:&nbsp;
                             span.card-estimation.not-estimated(
                                 ng-if="!us.total_points",
                                 translate="US.NOT_ESTIMATED"
                             )
-                        tg-due-date.due-date(
-                            due-date="us.due_date"
-                            is-closed="us.is_closed"
-                            ng-if="us.due_date"
-                            obj-type="us"
-                        )
+                    tg-due-date.due-date(
+                        format="icontext"
+                        due-date="us.due_date"
+                        is-closed="us.is_closed"
+                        ng-if="us.due_date"
+                        obj-type="us"
+                    )
                     include ../components/addnewtask
 
 
@@ -111,7 +120,7 @@ div.taskboard-table(
                         type="task"
                     )
             div.taskboard-row(ng-init="us = null", ng-class="{'row-fold':usFolded[null]}")
-                div.taskboard-row-title-box.taskboard-column
+                div.taskboard-row-title-box.taskboard-column(style="min-height: 70px")
                     a.vfold(
                         href=""
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
@@ -157,8 +166,8 @@ div.taskboard-table(
                         type="task"
                     )
         div.taskboard-row.issues-row(ng-class="{'row-fold':usFolded[0]}")
-            div.taskboard-row-title-box.taskboard-column
-                div.task-colum-name
+            div.taskboard-row-title-box.taskboard-column(style="border-bottom: none; min-height: 120px")
+                div.task-colum-name.task-colum-name-title
                     a.toggle-fold.vfold(
                         href=""
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
@@ -176,7 +185,7 @@ div.taskboard-table(
                     span.row-title(translate="TASKBOARD.TABLE.ROW_ISSUES_TITLE")
                     include ../components/addnewissue.jade
 
-            div.taskboard-cards-box
+            div.taskboard-cards-box(style="padding-top: .25rem")
                 tg-card.card.ng-animate-disabled(
                     tg-repeat="issue in milestoneIssues"
                     class="kanban-task-minimized"

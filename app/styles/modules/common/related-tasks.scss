@@ -123,7 +123,7 @@
     }
     .closed,
     .closed:hover {
-        border-left: 10px solid $whitish;
+        // border-left: 10px solid $whitish;
         color: $grey-30;
         a,
         svg {
@@ -217,10 +217,10 @@
         align-items: center;
         display: flex;
         img {
-            flex-basis: 35px;
+            flex-basis: 25px;
             // width & height they are only required for IE
-            height: 35px;
-            width: 35px;
+            height: 25px;
+            width: 25px;
         }
         figcaption {
             margin-left: .5rem;

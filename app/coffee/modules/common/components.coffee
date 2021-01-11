@@ -379,6 +379,9 @@ ListItemTypeDirective = ->
             domNode.css("background-color", type.color)
             domNode.attr("title", type.name)
 
+            domNode2 = $el.find(".label")
+            domNode2.html(type.name)
+            
         bindOnce $scope, "issueTypeById", (issueTypeById) ->
             issue = $scope.$eval($attrs.tgListitemType)
             render(issueTypeById, issue)
@@ -402,6 +405,9 @@ ListItemPriorityDirective = ->
             domNode.css("background-color", priority.color)
             domNode.attr("title", priority.name)
 
+            domNode2 = $el.find(".label")
+            domNode2.html(priority.name)
+            
         bindOnce $scope, "priorityById", (priorityById) ->
             issue = $scope.$eval($attrs.tgListitemPriority)
             render(priorityById, issue)
@@ -425,6 +431,9 @@ ListItemSeverityDirective = ->
             domNode.css("background-color", severity.color)
             domNode.attr("title", severity.name)
 
+            domNode2 = $el.find(".label")
+            domNode2.html(severity.name)
+            
         bindOnce $scope, "severityById", (severityById) ->
             issue = $scope.$eval($attrs.tgListitemSeverity)
             render(severityById, issue)

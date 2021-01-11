@@ -1,7 +1,7 @@
 $dropdown-width: 350px;
 
 .navbar {
-    background-color: $primary;
+    background-color: darken($primary, 10%);
     display: flex;
     height: $navbar;
     justify-content: space-between;
@@ -17,11 +17,21 @@ $dropdown-width: 350px;
         top: 0;
         z-index: -1;
     }
-    .nav-left,
-    .nav-right {
-        align-content: center;
-        align-items: center;
-        display: flex;
+    .project-name {
+        color: rgba($white, .85);
+        font-size: 1rem;
+        &::before {
+            border: 1px solid transparent;
+            border-right-color: rgba($white, .3);
+            border-top-color: rgba($white, .3);
+            content: '';
+            display: inline-block;
+            height: 26px;
+            margin-right: 20px;
+            transform: rotate(45deg);
+            vertical-align: middle;
+            width: 26px;
+        }
     }
     .nav-left {
         a {
@@ -29,15 +39,21 @@ $dropdown-width: 350px;
             padding: .5rem 1.5rem;
         }
         .logo {
-            background: rgba($black, .2);
-            padding: .3rem .75rem;
-        }
-        svg {
-            @include svg-size(1.6rem);
+            background: rgba($black, .5);
+            padding: .34rem .75rem;
+            svg {
+                @include svg-size(1.6rem);
+            }
         }
     }
     .nav-right {
         margin-left: auto;
+    }
+    .nav-left,
+    .nav-right {
+        align-content: center;
+        align-items: center;
+        display: flex;
         > a,
         .topnav-dropdown-wrapper > a {
             color: $white;
@@ -46,7 +62,7 @@ $dropdown-width: 350px;
         }
         .active {
             background: rgba($white, .95);
-            color: $secondary-dark;
+            color: $secondary-light;
             svg {
                 fill: $primary-50;
                 stroke: $primary-50;
@@ -59,6 +75,7 @@ $dropdown-width: 350px;
             transition: all .2s linear;
         }
     }
+    .nav-left > a,
     .nav-right > a,
     .topnav-dropdown-wrapper > a {
         color: $white;
@@ -77,9 +94,9 @@ $dropdown-width: 350px;
             justify-content: flex-end;
             line-height: 40px;
             min-height: 40px;
-            min-width: 200px;
+            // min-width: 200px;
             padding: 0;
-            padding-left: 2rem;
+            padding-left: 1rem;
             text-align: right;
             span {
                 padding-right: 1rem;
@@ -118,10 +135,16 @@ $dropdown-width: 350px;
     border: 1px solid $black;
     padding: .3rem;
     &.dropdown-user {
-        left: calc(50% - 200px/2);
+        left: auto;
         min-width: 200px;
+        right: 0;
         ul {
             margin-bottom: 0;
+            &::before,
+            &::after {
+                left: auto;
+                right: 9px;
+            }
         }
     }
     ul {
@@ -186,6 +209,15 @@ $dropdown-width: 350px;
     }
 }
 
+
+.nav-left .navbar-dropdown {
+    left: 0;
+    ul::before,
+    ul::after {
+        border-width: 7px;
+        left: 6.5%;
+    }
+}
 
 @keyframes highlightFadeOut {
     0% {
@@ -256,11 +288,12 @@ $dropdown-width: 350px;
         box-shadow: 0 0 3px 3px rgba($gray-lighter, .2);
         color: $blackish;
         display: none;
-        left: calc(50% - 450px/2);
+        // left: calc(50% - 450px/2);
         margin-top: 1px;
         min-width: 450px;
         padding: 0;
         position: absolute;
+        right: -20px;
         top: 2.4rem;
         z-index: 999;
 
@@ -278,6 +311,11 @@ $dropdown-width: 350px;
             display: flex;
             flex-direction: row;
             padding: .6rem .75rem;
+            &::after,
+            &::before {
+                left: auto;
+                right: 37px;
+            }
             .notifications-title {
                 flex-grow: 1;
                 text-transform: uppercase;

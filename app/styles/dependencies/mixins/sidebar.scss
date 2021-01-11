@@ -1,10 +1,10 @@
 @mixin sidebar-wide-width {
     width: 360px;
     @include until($ultrawide) {
-        width: 320px;
+        width: 420px;
     }
     @include until($fullhd) {
-        width: 300px;
+        width: 380px;
     }
     @include until($widescreen) {
         width: 280px;

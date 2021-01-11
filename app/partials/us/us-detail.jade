@@ -8,7 +8,7 @@ div.wrapper(
     .main.detail
         .detail-header-container(ng-class="{blocked: us.is_blocked}")
             tg-detail-nav(item="us")
-            .detail-ref {{'#' + us.ref}}
+            .detail-ref.ref-id(style="margin-top: 8px;") {{'#' + us.ref}}
             .detail-header
                 tg-detail-header(
                     item="us"

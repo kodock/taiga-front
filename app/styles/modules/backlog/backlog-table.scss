@@ -148,6 +148,45 @@
         }
     }
 }
+.backlog-table-body,
+.issues-table {
+    .tags-block {
+        display: inline-block;
+        margin-right: .5rem;
+        .tag {
+            // @include font-size(small);
+            background: none;
+            border-left: 0;
+            border-radius: 3px;
+            color: $grey-30;
+            // color: $white;
+            font-size: .73rem;
+            margin-right: 5px;
+            padding: 0 0 0 .9rem;
+            position: relative;
+            &:last-child {
+                margin-right: 0;
+            }
+            // border: 1px solid rgba($color: #000000, $alpha: .1);
+            // background: rgba($color: #000000, $alpha: .02);
+            .color {
+                border-radius: 20px;
+                color: $grey-30;
+                display: inline-block;
+                font-size: .9rem;
+                font-weight: 700;
+                // width: 1em;
+                // height: 1em;
+                left: 0;
+                position: absolute;
+                top: -2px;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+
 
 .backlog-table-body {
     &.forecasted-stories {
@@ -217,18 +256,6 @@
         }
         span {
             line-height: 1.5;
-        }
-    }
-    .tags-block {
-        display: none;
-        margin-top: .2rem;
-        .tag {
-            // @include font-size(small);
-            border-left: 0;
-            color: $white;
-            font-size: .7rem;
-            margin-right: .5rem;
-            padding: .1rem .5rem;
         }
     }
     .blocked {

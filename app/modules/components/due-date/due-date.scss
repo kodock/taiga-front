@@ -1,15 +1,27 @@
 tg-due-date[format="icontext"] {
-    background-color: $grey-10;
-    border: 1px solid $grey-20;
+    // background-color: rgba($color: $grey-20, $alpha: .3);
+    // border: 1px solid rgba($color: $grey-20, $alpha: .8);
     border-radius: 3px;
-    color: $grey-40;
+    color: $grey-30;
     display: inline-block;
     font-size: .78em;
-    margin-top: 4px;
-    padding: 2px 5px;
+    line-height: 1rem;
+    // margin-top: 4px;
+    // padding: 0 5px;
+    > tg-svg,
+    > .due-date-icon {
+        display: inline-block;
+        margin: 0 .25rem 0 0;
+        position: relative;
+        right: auto;
+        top: .08rem;
+    }
     svg {
         height: 1em;
         width: 1em;
+    }
+    span {
+        vertical-align: baseline;
     }
 }
 
@@ -89,7 +101,7 @@ tg-due-date[format="icontext"] {
 }
 
 .issues-table .subject .due-date-icon {
-    top: .25rem;
+    top: .12rem;
 }
 
 .card-statistics .due-date-icon {

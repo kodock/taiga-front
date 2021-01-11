@@ -4,9 +4,29 @@
 
 $primary: #25A28C;
 $primary-75: #5CBAA9;
-$primary-50: #92D1C5;
+$primary-50: #92D1C5; // navbar icon color
 $primary-25: #C9E8E2;
 $primary-10: #E9F6F3;
+$primary: #0075ff;
+$primary-75: #2e93ff; // navbar icon color
+$primary-50: #74b6fd; // navbar icon color
+$primary-25: #9dccfe; // navbar icon color
+$primary-10: #d2e7fe;
+
+$primary: #048596;
+$primary-75: #2e93a0; // navbar icon color
+$primary-50: #67abb4; // navbar icon color
+$primary-25: #a6dbe2; // navbar icon color
+$primary-10: #d9fbff;
+
+
+    
+// $primary: #303f9f;
+// $primary-75: #5c6bc0;
+// $primary-50: #7986cb;
+// $primary-25: #8994d4;
+// $primary-10: #9fa9e2;
+
 
 $secondary: #A7CB23;
 $secondary-75: #BDD65A;
@@ -78,3 +98,35 @@ $dropdown-color: rgba(darken($grayer, 20%), 1);
 $code-bg: #272822;
 
 $highlight: #E5F390;
+
+// Custom Variables
+
+$nav-background: #2a2b38;
+
+// Override Mixins
+
+@mixin background-taiga {
+    // background: url('../images/invitation_bg.jpg') no-repeat center center;
+    // background-size: cover;
+    background: $primary;
+}
+
+// @mixin sidebar-wide-width {
+//     width: 400px;
+//     @include until($ultrawide) {
+//         width: 400px;
+//     }
+//     @include until($fullhd) {
+//         width: 400px;
+//     }
+//     @include until($widescreen) {
+//         width: 350px;
+//     }
+//     @include until($desktop) {
+//         width: 350px;
+//     }
+//     @include until($tablet) {
+//         width: 300px;
+//     }
+// }
+

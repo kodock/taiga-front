@@ -1,20 +1,55 @@
 nav.navbar(ng-if="vm.isEnabledHeader")
+    //- div.nav-left
+    //-     a.logo(
+    //-         ng-if="!vm.isAuthenticated"
+    //-         href="https://taman.altra.id/",
+    //-         title="{{'PROJECT.NAVIGATION.HOMEPAGE' | translate}}"
+    //-     )
+    //-         include ../../svg/logo.svg
+
+    //-     a.logo(
+    //-         ng-if="vm.isAuthenticated"
+    //-         href="#",
+    //-         tg-nav="home",
+    //-         title="{{'PROJECT.NAVIGATION.HOMEPAGE' | translate}}"
+    //-     )
+    //-         include ../../svg/logo.svg
+
+    div.nav-left(ng-if="vm.isAuthenticated")
+        a(
+            tg-nav="home"
+            ng-class="{'active': vm.active == 'dashboard' }"
+            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}"
+        )
+            tg-svg(svg-icon="icon-dashboard")
+
+        div.topnav-dropdown-wrapper(
+            ng-show="vm.projects.size"
+            tg-dropdown-project-list
+            active="vm.active == 'projects'"
+        )
+
+        .project-name(ng-if="vm.active_project")
+            | {{vm.active_project.get('name')}}
+
+        //- @Tain: create external links
+        //- a(
+        //-     href="https://squad.qlobot.com",
+        //-     target="_blank",
+        //-     title="Squad Space",
+        //-     translate="Haloo"
+        //- )
+
     div.nav-left
-        a.logo(
+        a(  
             ng-if="!vm.isAuthenticated"
-            href="https://taiga.io/",
-            title="{{'PROJECT.NAVIGATION.HOMEPAGE' | translate}}"
-        )
-            include ../../svg/logo.svg
-
-        a.logo(
-            ng-if="vm.isAuthenticated"
             href="#",
-            tg-nav="home",
-            title="{{'PROJECT.NAVIGATION.HOMEPAGE' | translate}}"
+            tg-nav="discover",
+            ng-class="{'active': vm.active == 'discover' }"
+            title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
         )
-            include ../../svg/logo.svg
-
+            tg-svg(svg-icon="icon-discover")
+            
         a(
             ng-if="vm.customSupportUrl"
             href="{{ vm.customSupportUrl }}",
@@ -39,26 +74,6 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         )
 
     div.nav-right(ng-if="vm.isAuthenticated")
-        a(
-            tg-nav="home"
-            ng-class="{'active': vm.active == 'dashboard' }"
-            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}"
-        )
-            tg-svg(svg-icon="icon-dashboard")
-        a(
-            href="#",
-            tg-nav="discover",
-            ng-class="{'active': vm.active == 'discover' }"
-            title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
-        )
-            tg-svg(svg-icon="icon-discover")
-
-        div.topnav-dropdown-wrapper(
-            ng-show="vm.projects.size"
-            tg-dropdown-project-list
-            active="vm.active == 'projects'"
-        )
-
         div.topnav-dropdown-wrapper(
             tg-dropdown-notifications
             active="vm.active == 'notifications'"

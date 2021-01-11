@@ -782,8 +782,14 @@ TaskboardSquishColumnDirective = (rs) ->
             recalculateTaskboardWidth()
 
         $scope.foldUs = (rowId) ->
-            $scope.usFolded[rowId] = !!!$scope.usFolded[rowId]
-            rs.tasks.storeUsRowModes($scope.projectId, $scope.sprintId, $scope.usFolded)
+            if rowId == -1
+                _.forEach $scope.userstories, (us) ->
+                    $scope.usFolded[us.id] = true
+                
+                rs.tasks.storeUsRowModes($scope.projectId, $scope.sprintId, $scope.usFolded)
+            else
+                $scope.usFolded[rowId] = !!!$scope.usFolded[rowId]
+                rs.tasks.storeUsRowModes($scope.projectId, $scope.sprintId, $scope.usFolded)
 
             recalculateTaskboardWidth()
 
@@ -826,7 +832,7 @@ TaskboardSquishColumnDirective = (rs) ->
             totalWidth = _.reduce columnWidths, (total, width) ->
                 return total + width
 
-            $el.find('.taskboard-table-inner').css("width", totalWidth)
+            $el.find('.taskboard-table-inner').css("width", totalWidth - columnWidths.pop())
 
             issuesBoxWidth = $el.find('.issues-row .taskboard-row-title-box').outerWidth(true)
             $el.find('.issues-row').css("width", totalWidth - columnWidths.pop())

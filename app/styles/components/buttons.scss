@@ -6,7 +6,7 @@
     align-items: center;
     background: transparent;
     border: 0;
-    border-radius: 3px;
+    border-radius: 5px;
     color: $white;
     cursor: pointer;
     display: inline-flex;
@@ -50,7 +50,7 @@
         }
     }
     &.button-small {
-        border-radius: 0;
+        border-radius: 5px;
         padding: 0 .5rem;
         width: 38px;
     }
@@ -276,7 +276,7 @@
             background-color: $grey-20;
             cursor: pointer;
             display: block;
-            padding: 2rem 1rem;
+            padding: 1rem;
             text-align: center;
             text-transform: uppercase;
         }

@@ -1,0 +1,252 @@
+.ref-id {
+    color: #aaa;
+    font-size: smaller;
+}
+
+.issue-properties {
+    // &::after {
+    //     content: "";
+    //     clear: both;
+    // }
+    display: inline-block;
+    margin-right: 5px;
+    .issue-properties-item {
+        display: inline-block;
+        margin-right: 5px;
+        // border-left: 5px solid transparent;
+        // float: left;
+    }
+    
+    .level {
+        height: 0.5em;
+        width: 0.5em;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    .level + .label {
+        margin-left: 5px;
+        display: inline-block;
+    }
+}
+
+.level {
+    border-radius: 3px;
+    margin-right: 0!important;
+    padding-left: 20px;
+    color: $grey-20;
+    // display: block;
+    // &::before {
+    //     content: "";
+    //     display: inline-block;
+    // }
+}
+
+.level + .label {
+    display: none;
+}
+
+.level-field.level-field-min {
+    flex-basis: 50px;
+    width: 50px;
+}
+
+// --------------------------------------------------------
+// replace: app\styles\modules\backlog\sprints.scss
+// --------------------------------------------------------
+
+.sprints .sprint-table .us-name {
+    [tg-bo-ref="us.ref"] {
+        color: #aaa;
+        font-size: smaller;
+    }
+    &.closed {
+        color: #ccc;
+        [tg-bind-html^="us.subject"]{
+            text-decoration: line-through;
+        }
+    }
+}
+
+
+// --------------------------------------------------------
+// replace: app\styles\modules\common\nav.scss
+// --------------------------------------------------------
+
+tg-project-menu {
+    background-color: $nav-background;
+}
+
+.main-nav {
+    svg {
+        fill: #dddddd99;
+    }
+    
+    .active {
+        // background: rgba($white, .95);
+        // background: rgba($white, .95);
+        background: rgb(31, 32, 41);
+        color: $secondary-dark;
+        svg {
+            fill: $white;
+            stroke: $grey-40;
+        }
+    }
+}
+
+
+// --------------------------------------------------------
+// replace: dari stylesheet inspection
+// --------------------------------------------------------
+
+.navbar {
+    .nav-left,
+    .nav-right {
+        font-size: 0.85em;
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        .active {
+            background: rgba(0, 0, 0, 0.15);
+            background: transparent;
+        }
+
+        > a:not(.user-avatar):not(.logo), 
+        .topnav-dropdown-wrapper > a:not(.user-avatar) {
+
+            padding: .65rem 1.3rem .65rem 1rem;
+        }
+    }
+}
+
+// .navbar .nav-right > a.user-avatar, 
+// .navbar .nav-right .topnav-dropdown-wrapper > a.user-avatar {
+//     padding-top: .65rem;
+//     padding-bottom: .65rem;
+// }
+
+
+.main-nav svg {
+    height: 1.5rem;
+}
+
+
+.milestone-us-item-row tg-due-date svg {
+    width: .9em;
+    height: .9em;
+}
+
+.card-owner img {
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 50%;
+    margin: 0.25rem .5rem;
+}
+
+.card-owner .card-owner-name{
+    font-size:  smaller;
+    font-weight: bold;
+}
+
+.card {
+    box-shadow: none;
+    border-radius: 5px;
+    border: 1px solid #e9e8ef;
+    &:hover {
+        box-shadow: 3px 3px 0 #eee;
+    }
+}
+
+
+
+// .taskboard-cards-box {
+//     background: #fafafa;
+// }
+
+.taskboard-table .task-colum-name {
+    margin-right: 0;
+    border-right: 1px solid lighten($color: $grey-10, $amount: 3);
+    // background: #fafafa;
+}
+.taskboard-table-body .taskboard-column {
+    margin-right: 0;
+    border-right: 1px solid lighten($color: $grey-10, $amount: 3);
+    padding-top: 10px;
+    border-bottom: 1px solid lighten($color: $grey-10, $amount: 3);
+}
+
+.taskboard-table-body .taskboard-row {
+    margin-bottom: 0;
+/*     border-bottom: 1px solid #eae7e7; */
+}
+
+// .card-title [ng-if="vm.visible('ref')"]{
+//     font-size: smaller;
+//     color: #aaa;
+// }
+
+.card-owner .card-owner-name{
+    font-size:  smaller;
+    font-weight: bold;
+}
+
+.card {
+    box-shadow: none;
+    border-radius: 5px;
+    border: 1px solid #e9e8ef;
+}
+
+
+
+.button-filter svg {
+    display: block;
+}
+
+.loading-bar {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .item {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: loadBar;
+        animation-timing-function: ease-in;
+        background: $gray;
+        flex: 1;
+        height: 5px;
+    }
+
+    $colors-list: $yellow-pear $green-japanese-laurel $red-amaranth $purple-eggplant $green-olive;
+    @each $current-color in $colors-list {
+        $i: index($colors-list, $current-color) - 1;
+        .item-#{$i} {
+            animation-delay: #{$i}s;
+            background: $current-color;
+        }
+    }
+}
+
+.us-title [tg-bo-ref="us.ref"] {
+    font-size: smaller;
+    color: #aaa;
+}
+
+
+[tg-main-title] {
+    text-transform: none;
+}
+
+
+
+.menu-secondary, .right-sidebar {
+    background: $grey-02;
+    border-left: 1px solid $grey-05;
+    box-shadow: 3px -4px 4px #f1f1f1 inset;
+}
+.right-sidebar {
+    tg-filter {
+        background: none;
+    }
+
+}

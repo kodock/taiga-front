@@ -135,11 +135,11 @@ tg-filter {
 
 .filters-cats {
     ul {
-        border-top: 1px solid $gray-light;
+        border-top: 1px solid $grey-10;
         margin-bottom: 0;
     }
     li {
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid $grey-10;
         text-transform: uppercase;
         &.selected {
             border-bottom: 0;

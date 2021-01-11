@@ -1,5 +1,8 @@
 .home-wrapper {
     display: flex;
+    margin: 0;
+    max-width: inherit;
+    padding: 1rem;
     @include until($desktop) {
         flex-direction: column;
     }
@@ -7,6 +10,9 @@
         flex: 1;
         @include until($widescreen) {
             flex-direction: column;
+        }
+        h1 {
+            text-transform: none;
         }
     }
     .dashboard-container {

@@ -1,11 +1,11 @@
 section.issues-table.basic-table(ng-class="{empty: !issues.length}")
     div.row.title
-        div.level-field(data-fieldname="type")
+        div.level-field.level-field-min(data-fieldname="type")
              | {{"ISSUES.TABLE.COLUMNS.TYPE" | translate}}
-        div.level-field(data-fieldname="severity")
-             | {{"ISSUES.TABLE.COLUMNS.SEVERITY" | translate}}
-        div.level-field(data-fieldname="priority")
-             | {{"ISSUES.TABLE.COLUMNS.PRIORITY" | translate}}
+        //- div.level-field(data-fieldname="severity")
+        //-      | {{"ISSUES.TABLE.COLUMNS.SEVERITY" | translate}}
+        //- div.level-field(data-fieldname="priority")
+        //-      | {{"ISSUES.TABLE.COLUMNS.PRIORITY" | translate}}
         div.votes(data-fieldname="total_voters")
              | {{"ISSUES.TABLE.COLUMNS.VOTES" | translate}}
         div.subject(data-fieldname="subject")
@@ -20,10 +20,11 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
     div.row.table-main(
         ng-repeat="issue in issues track by issue.id"
         ng-class="{'is-blocked': issue.is_blocked}"
+        ng-style="{'opacity': {{issue.is_closed ? 0.7 : 1}}, 'background': {{issue.is_closed ? \"'#f4f4f4'\" : \"'#fff'\"}}}"
     )
-        div.level-field(tg-listitem-type="issue")
-        div.level-field(tg-listitem-severity="issue")
-        div.level-field(tg-listitem-priority="issue")
+        div.level-field.level-field-min(tg-listitem-type="issue")
+        //- div.level-field(tg-listitem-severity="issue")
+        //- div.level-field(tg-listitem-priority="issue")
         div.votes.ng-animate-disabled(
             ng-class="{'inactive': !issue.total_voters}"
             ng-if="!issue.is_voter"
@@ -42,24 +43,37 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         )
             tg-svg(svg-icon="icon-upvote")
             span {{ issue.total_voters }}
-        div.subject
+        div.subject(style="line-height: 1.5em;")
             a(
                 href=""
                 tg-nav="project-issues-detail:project=project.slug,ref=issue.ref"
                 title="#{{ ::issue.ref }} {{ ::issue.subject }}"
             )
-                span(tg-bo-ref="issue.ref")
+                //- | {{issue}}
+                span(tg-bo-ref="issue.ref" class="ref-id")
                 span.blocked-text(
                     ng-if="issue.is_blocked"
                     title="{{issue.blocked_note}}"
                 ) {{'ISSUES.TABLE.BLOCKED' | translate}}
                 span(ng-bind-html="issue.subject | emojify")
-                tg-due-date(
-                    due-date="issue.due_date"
-                    is-closed="us.is_closed"
-                    ng-if="issue.due_date"
-                    obj-type="issue"
-                )
+                //-  ng-class="{'text-muted': issue.is_closed}"
+                div
+                    //- | {{issue}}
+                    div.issue-properties(title="Priority: {{issue.priority.name}}, Type: {{issue.type.name}}")
+                        //- div.issue-properties-item(tg-listitem-type="issue" with-label="false")
+                        div.issue-properties-item(tg-listitem-priority="issue")
+                        //- div.severity(tg-listitem-severity="issue")
+                            //- div.label 
+                            //-     | {{issue.type}}
+                        //- tg-svg(svg-icon="icon-bug")
+                    .tags-block(tg-colorize-backlog-tags="issue.tags")
+                    tg-due-date(
+                        format="icontext"
+                        due-date="issue.due_date"
+                        is-closed="issue.is_closed"
+                        ng-if="issue.due_date"
+                        obj-type="issue"
+                    )
 
 
         div.issue-field(tg-issue-status-inline-edition="issue")

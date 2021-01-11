@@ -67,6 +67,8 @@ class ProjectService
         @._section = null
         @._sectionsBreadcrumb = Immutable.List()
 
+        @rootScope.activeProject = null
+
     autoRefresh: () ->
         intervalId = @interval () =>
             @.fetchProject()
@@ -88,6 +90,8 @@ class ProjectService
     setProject: (project) ->
         @._project = project
         @._activeMembers = @._project.get('members').filter (member) -> member.get('is_active')
+
+        @rootScope.activeProject = project
 
     setProjectBySlug: (pslug) ->
         return new Promise (resolve, reject) =>

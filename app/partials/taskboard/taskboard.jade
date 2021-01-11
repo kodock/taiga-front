@@ -6,7 +6,7 @@ div.wrapper(
     ng-init="section='backlog'"
 )
     tg-project-menu
-    section.main.taskboard
+    section.main.taskboard(style="padding-left: 0; padding-right: 0; padding-bottom: 0; ")
         tg-filter(
           open="{{ctrl.openFilter}}"
           q="ctrl.filterQ"
@@ -21,7 +21,7 @@ div.wrapper(
           on-remove-filter="ctrl.removeFilter(filter)"
           on-change-q="ctrl.changeQ(q)"
         )
-        .taskboard-header
+        .taskboard-header(style="padding-left: 2rem; padding-right: 2rem")
             h1
                 span.green(tg-bo-bind="sprint.name")
                 span.project-name(tg-bo-bind="project.name", class="project-name-short")
@@ -35,15 +35,16 @@ div.wrapper(
                     ng-click="ctrl.openFilter = !ctrl.openFilter"
                 )
                     span.filter-num(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
-                    tg-svg(svg-icon="icon-filters")
+                    tg-svg(svg-icon="icon-filters" ng-show="!ctrl.openFilter")
+                    tg-svg(svg-icon="icon-close" ng-show="ctrl.openFilter")
 
         .taskboard-inner
+            div(style="padding-left: 2rem; padding-right: 2rem")
+                include ../includes/components/sprint-summary
 
-            include ../includes/components/sprint-summary
-
-            div.graphics-container
-                div.burndown(tg-sprint-graph)
-                    include ../includes/modules/burndown
+                div.graphics-container
+                    div.burndown(tg-sprint-graph)
+                        include ../includes/modules/burndown
 
             include ../includes/modules/taskboard-table
 

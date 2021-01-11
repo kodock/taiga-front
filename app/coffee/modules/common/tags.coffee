@@ -52,27 +52,26 @@ TagsDirective = ->
 
 module.directive("tgTags", TagsDirective)
 
-
 ColorizeTagsBacklogDirective = ($emojis) ->
     template = _.template("""
         <% _.each(tags, function(tag) { %>
-            <% if (tag[1] !== null) { %>
-            <span class="tag"
-                  style="background-color: <%- tag[1] %>"
-                  title="<%- tag[0] %>">
-                  <%= emojify(tag[0]) %>
-            </span>
-            <% } %>
-        <% }) %>
-        <% _.each(tags, function(tag) { %>
-            <% if (tag[1] === null) { %>
             <span class="tag"
                   title="<%- tag[0] %>">
+                  <span class="color" style="color: <%- tag[1] %>">#</span>
                   <%= emojify(tag[0]) %>
             </span>
-            <% } %>
         <% }) %>
     """)
+            # <% if (tag[1] !== null) { %>
+            # <% } %>
+        # <% _.each(tags, function(tag) { %>
+        #     <% if (tag[1] === null) { %>
+        #     <span class="tag"
+        #           title="<%- tag[0] %>">
+        #           <%= emojify(tag[0]) %>
+        #     </span>
+        #     <% } %>
+        # <% }) %>
 
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (tags) ->

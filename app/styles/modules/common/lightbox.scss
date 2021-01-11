@@ -1,8 +1,20 @@
 .lightbox {
     @include lightbox;
+    background: rgba($black, .2);
+    .title {
+        text-align: left;
+    }
     h2 {
-        @include font-size(xlarge);
+        @include font-size(large);
         @include font-type(light);
+        color: $primary;
+        font-weight: 700;
+    }
+    form,
+    .form {
+        background: $white;
+        border-radius: 5px;
+        padding: 20px;
     }
 }
 
@@ -140,9 +152,11 @@
 
 .lightbox-generic-bulk {
     form {
+        border-radius: 5px;
         flex-basis: 600px;
         flex-grow: 0;
         max-width: 600px;
+        padding: 20px;
     }
     textarea {
         max-height: 12rem;

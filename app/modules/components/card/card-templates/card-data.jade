@@ -20,6 +20,7 @@
 
     .card-statistics
         tg-due-date.statistic.card-due-date(
+            format="icontext"
             due-date="vm.item.getIn(['model', 'due_date'])"
             is-closed="vm.item.getIn(['model', 'is_closed'])"
             obj-type="{{ vm.type }}"

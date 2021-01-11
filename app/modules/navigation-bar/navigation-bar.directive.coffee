@@ -17,7 +17,7 @@
 # File: navigation-bar/navigation-bar.directive.coffee
 ###
 
-NavigationBarDirective = (currentUserService, navigationBarService, locationService, navUrlsService, config) ->
+NavigationBarDirective = (currentUserService, navigationBarService, locationService, navUrlsService, config, $rootScope, tgProjectService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
@@ -35,6 +35,13 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
 
         scope.$on "$routeChangeSuccess", () ->
             scope.vm.active = null
+            
+            is_project_active = locationService.path().match(/\/project\/(.*)\//)
+            scope.vm.active_project = null
+
+            if is_project_active
+                scope.vm.active_project = $rootScope.activeProject
+
             switch locationService.path()
                 when "/"
                     scope.vm.active = 'dashboard'
@@ -44,6 +51,7 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
                     scope.vm.active = 'notifications'
                 when "/projects/"
                     scope.vm.active = 'projects'
+                    
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"
@@ -58,7 +66,9 @@ NavigationBarDirective.$inject = [
     "tgNavigationBarService",
     "$tgLocation",
     "$tgNavUrls",
-    "$tgConfig"
+    "$tgConfig",
+    "$rootScope",
+    "tgProjectService",
 ]
 
 angular.module("taigaNavigationBar").directive("tgNavigationBar", NavigationBarDirective)
